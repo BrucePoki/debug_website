@@ -1,10 +1,62 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Website</title>
+  <meta charset="UTF-8">
+  <title>Bruce's Pixel Debug Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- You can add advertising pixels, tag managers, or scripts here -->
+  <!-- e.g. <script src="your-pixel.js"></script> -->
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      line-height: 1.6;
+    }
+    button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello from GitHub Pages!</h1>
+
+  <h1>Bruce's Pixel Debug Site</h1>
+  <p>This is a static site hosted with GitHub Pages. You can use it to test tracking pixels, scripts, and basic web functionality.</p>
+
+  <button id="cta-button">Click Me</button>
+
+  <div style="margin-top: 150vh;">
+    <p>Scroll down to test scroll-based triggers.</p>
+  </div>
+
+  <script>
+    // Placeholder for tracking triggers
+
+    // ✅ Click event
+    document.getElementById("cta-button").addEventListener("click", () => {
+      console.log("Button clicked");
+      // Add pixel logic here
+    });
+
+    // ✅ Scroll depth event
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollY / docHeight;
+      if (scrollPercent > 0.5 && !window._scrollTriggered) {
+        window._scrollTriggered = true;
+        console.log("Scrolled past 50%");
+        // Add scroll trigger logic here
+      }
+    });
+
+    // ✅ Time on page event
+    setTimeout(() => {
+      console.log("User stayed 5 seconds");
+      // Add time-based logic here
+    }, 5000);
+  </script>
+
 </body>
 </html>
